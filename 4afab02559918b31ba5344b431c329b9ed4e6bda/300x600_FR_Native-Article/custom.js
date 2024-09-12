@@ -72,11 +72,11 @@ var creative = (function(window, document, undefined) {
         .addLabel('frame1')
         .from(frame1a.words, {duration: .5, stagger:.05, yPercent: 100, autoAlpha: 0, ease: "back.out"}, 'frame1')
 
-        .from('.card__wrap', {duration: settings.duration, x: settings.x, scale: settings.scale, y: settings.yPercent, ease: "back.inOut(.75, 1)"}, 'frame1')
-        .from('.card', {duration: settings.duration, rotationY: settings.rotationY, rotationZ: settings.rotationZ, rotationX: settings.rotationX, perspective: settings.perspective, ease: "sine.out", onStart: function(){gsap.fromTo('.card', {duration: 1, filter: "blur(2px)"}, {filter: "blur(0px)"})}}, 'frame1')
+        .from('.card__wrap', {duration: settings.duration, delay: .5, x: settings.x, scale: settings.scale, y: settings.yPercent, ease: "back.inOut(.75, 1)"}, 'frame1')
+        .from('.card', {duration: settings.duration, delay: .5, rotationY: settings.rotationY, rotationZ: settings.rotationZ, rotationX: settings.rotationX, perspective: settings.perspective, ease: "sine.out", onStart: function(){gsap.fromTo('.card', {duration: 1, filter: "blur(2px)"}, {filter: "blur(0px)"})}}, 'frame1')
         .from(frame1b.words, {duration: .5, stagger:.05, yPercent: 100, autoAlpha: 0, ease: "back.out", delay: settings.frame1bDelay}, '<')
 
-        .to(frame1a.words, {duration: .5, stagger:-.05, xPercent: 100, autoAlpha: 0, ease: "back.inOut"})
+        .to(frame1a.words, {duration: .5, stagger:-.05, xPercent: 100, autoAlpha: 0, ease: "back.inOut"}, '+=.5')
         .to(frame1b.words, {duration: .5, stagger:-.05, xPercent: 100, autoAlpha: 0, ease: "back.inOut"}, '<')
 
 
