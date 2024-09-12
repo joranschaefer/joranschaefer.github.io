@@ -83,9 +83,8 @@ var creative = (function(window, document, undefined) {
         .from(frame2.words, {duration: .5, stagger:.05, yPercent: 100, autoAlpha: 0, ease: "back.out"})
         .set('.card__wrap', {x: settings.x, y: settings.endframeCardY})
 
-        .addLabel('frame3', '=+1')
-        .from(frame3.words, {duration: .5, stagger:.05, yPercent: 100, autoAlpha: 0, ease: "back.out"}, '<')
-
+        .addLabel('frame3', '=+.5')
+        .from(frame3.words, {duration: .5, stagger:.05, yPercent: 100, autoAlpha: 0, ease: "back.out"}, 'frame3')
 
         .addLabel('endframe', '=+1')
 

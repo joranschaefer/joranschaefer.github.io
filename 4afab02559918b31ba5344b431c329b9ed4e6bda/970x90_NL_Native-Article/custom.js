@@ -79,7 +79,6 @@ var creative = (function(window, document, undefined) {
         })
 
         .addLabel('frame1')
-        // .from('.frame--1', {duration: .5, autoAlpha: 0, yPercent: 100, ease: "back.out"}, 'frame1')
         .from(frame1.words, {duration: .5, stagger:.05, yPercent: 50, autoAlpha: 0, ease: "back.out"}, 'frame1')
 
         .from('.card__wrap', {duration: settings.duration, x: settings.x, scale: settings.scale, y: settings.yPercent,  delay: 1,  ease: "back.out(1.75, 2)"}, 'frame1')
@@ -89,14 +88,10 @@ var creative = (function(window, document, undefined) {
 
         .addLabel('frame2', settings.frame2Threshold)
         .from(frame2.words, {duration: .5, stagger:.05, yPercent: 50, autoAlpha: 0, ease: "back.out"}, 'frame2')
-        //.from('.frame--2', {duration: 1, yPercent: 100, autoAlpha: 0}, 'frame2')
 
         .addLabel('frame3', '=+1')
         .to(frame2.words, {duration: .5, stagger:.05, yPercent: -50, autoAlpha: 0, ease: "back.out"}, 'frame3')
         .from(frame3.words, {duration: .5, stagger:.05, yPercent: 50, autoAlpha: 0, ease: "back.out"}, '<')
-
-        //.to('.frame--2', {duration: 1, yPercent: -100, autoAlpha: 0}, 'frame3')
-        //.from('.frame--3', {duration: 1, yPercent: 100, autoAlpha: 0}, '<')
 
         .addLabel('endframe', '=+1')
         .to(frame3.words, {duration: .5, stagger:.05, yPercent: -50, autoAlpha: 0, ease: "back.out"}, 'endframe')
