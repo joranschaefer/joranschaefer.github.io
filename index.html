@@ -1,146 +1,357 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Password Protected</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joran Schaefer | Creative Developer</title>
+    <meta name="description" content="Hi! I am a creative developer. I build display campaigns, HTML emails, internal tools and websites." />
+    <meta property="og:title" content="Joran Schaefer — Creative Developer" />
+    <meta property="og:description" content="Banners, email, tools and websites. Designer by training, developer by habit." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-DoycEruX.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-ITKDakAF.css">
+  </head>
+  <body>
+    <header class="nav">
+      <a class="nav__logo" href="#top" aria-label="Joran Schaefer, back to top">JS<span>.</span></a>
+      <nav aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#lab">Lab</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav__cta">Contact</a>
+      </nav>
+    </header>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="robots" content="noindex, nofollow">
-
-        <style>
-            *,
-            *:after,
-            *:before {
-                box-sizing: border-box;
-            }
-            body,
-            html {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                font-weight: 300;
-                font-size: 16px;
-                background: #f2f2f2;
-                color: #2D3737;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100%;
-            }
-
-            .protected {
-                background: #fff;
-                -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
-                box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
-                border-radius: 3px;
-                min-width: 500px;
-
-            }
-            .protected__content {
-                padding: 24px 28px;
-            }
-            .protected__content__heading {
-                font-size: 16px;
-                font-weight: 500;
-                margin: 0 0 12px;
-                line-height: 1;
-            }
-            .protected__alert {
-                display: none;
-                border-bottom: 1px solid transparent;
-                border-radius: 3px 3px 0 0;
-                padding: 12px 14px;
-                color: #a94442;
-                background-color: #f2dede;
-                border-color: #ebccd1;
-            }
-            .protected__content__input {
-                display: block;
-                border: solid 1px #ccc;
-                padding: 12px 14px;
-                -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
-                box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
-                font-size: 16px;
-                width: 100%;
-                border-radius: 3px;
-
-                margin-bottom: 12px;
-            }
-            .protected__content__input:focus {
-                outline: none;
-                border-color: #e28c67;
-            }
-            .protected__content__btn {
-                background-color: #e28c67;
-                border-radius: 3px;
-                cursor: pointer;
-                border: none;
-                color: #fff;
-                padding: 12px 14px;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-                font-weight: 500;
-                font-size: 16px;
-
-            }
-            .protected__content__btn:hover {
-                background-color: #e28c67;
-            }
-
-        </style>
-
-    </head>
-
-    <body>
-
-        <div class="protected">
-            <div class="protected__alert" data-id="alert">You entered the wrong password</div>
-            <div class="protected__content">
-                <h1 class="protected__content__heading">Please enter your 6 digit code</h1>
-                <input class="protected__content__input" data-id="password" type="password" placeholder="password"/>
-                <button data-id="button" type="button" class="protected__content__btn">Continue</button>
-            </div>
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <p class="eyebrow"><span class="dot"></span> Creative developer · Kontich, BE · <span data-clock>--:--</span></p>
+        <h1 class="hero__title">
+          <span class="hero__hello">Ohai, I'm</span>
+          <span class="hero__name">Joran <em>Schaefer</em></span>
+        </h1>
+        <div class="hero__rule" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <p class="hero__lede">
+            Creative developer at <strong>VML</strong>. I build display campaigns that ship in dozens of sizes, HTML emails that survive Outlook, the tooling that makes both faster, and websites for businesses I believe in.
+          </p>
+          <dl class="stats">
+            <div><dt>11</dt><dd>years of service</dd></div>
+            <div><dt>100+</dt><dd>brands worked on</dd></div>
+            <div><dt>1k+</dt><dd>mails developed</dd></div>
+            <div><dt>10M+</dt><dd>lines written</dd></div>
+          </dl>
         </div>
+      </section>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
-        <script type="text/javascript">
-            "use strict"
-            var button = document.querySelectorAll('[data-id="button"]')
-            var password = document.querySelectorAll('[data-id="password"]')
+      <!-- MARQUEE -->
+      <div class="marquee" aria-hidden="true">
+        <!-- Filled from src/data/clients.json -->
+        <div class="marquee__track" data-clients></div>
+      </div>
 
-            function login(secret) {
-                var hash = sha1(secret)
-                var url = hash + "/index.html"
-                var alert = document.querySelectorAll('[data-id="alert"]')
+      <!-- WORK -->
+      <section id="work" class="section">
+        <header class="section__head">
+          <span class="section__num">01</span>
+          <h2>What I make</h2>
+          <p>Eleven years of service, three types of work. The client work stays under NDA, so every example below was built for this page. They're all live, so poke at them.</p>
+        </header>
 
-                var request = new XMLHttpRequest()
-                request.open('GET', url, true)
+        <!-- A · DISPLAY ADS -->
+        <article class="kind reveal" id="banners">
+          <div class="kind__copy">
+            <p class="kind__index"><span>A</span> Display ads</p>
+            <h3>Banners that behave</h3>
+            <p>I've animated HTML5 ads for clients such as Belfius, Nationale Loterij, Q8, Mazda, Amazon and many more.</p>
+            <ul class="kind__facts">
+              <li><strong>1</strong>source</li>
+              <li><strong>4</strong>sizes here</li>
+              <li><strong data-weight>–</strong>of 150 kB</li>
+            </ul>
+            <ul class="tags"><li>Banners</li><li>GSAP</li><li>IAB</li><li>Weborama</li><li>Adnami</li></ul>
+            <p class="kind__hint">↳ Switch sizes: same code, new layout. Then click it.</p>
+          </div>
 
-                request.onload = function () {
-                    if (request.status >= 200 && request.status < 400) {
-                        window.location = url
-                    } else {
-                        parent.location.hash = hash
-                        alert[0].style.display = 'block'
-                        password[0].setAttribute('placeholder', 'Incorrect password')
-                        password[0].value = ''
-                    }
-                }
-                request.onerror = function () {
-                    parent.location.hash = hash
-                    alert[0].style.display = 'block'
-                    password[0].setAttribute('placeholder', 'Incorrect password')
-                    password[0].value = ''
-                }
-                request.send()
-            }
+          <div class="demo demo--banner" data-banner>
+            <div class="demo-bar">
+              <div class="seg" role="group" aria-label="Banner size">
+                <button type="button" data-size="300x250" aria-pressed="false">300×250</button>
+                <button type="button" data-size="300x600" aria-pressed="true">300×600</button>
+                <button type="button" data-size="728x90" aria-pressed="false">728×90</button>
+                <button type="button" data-size="320x100" aria-pressed="false">320×100</button>
+              </div>
+              <button type="button" class="demo-btn" data-replay aria-label="Replay banner">↻ Replay</button>
+            </div>
 
-            button[0].addEventListener("click", function () {
-                login(password[0].value)
-            })
+            <div class="ad-viewport">
+              <a class="ad" href="#contact" data-clicktag style="width:300px;height:600px" aria-label="Banner: Joran Schaefer, creative developer. Click to get in touch.">
+                <div class="ad__bg" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div class="ad__f ad__f--hello"><span>Hi, I'm</span><strong>Joran</strong></div>
+                <div class="ad__f"><strong>11</strong><span>years of pixels at VML</span></div>
+                <div class="ad__f"><strong>100+</strong><span>brands, every size they asked for</span></div>
+                <div class="ad__f"><strong>1k+</strong><span>mails that survived Outlook</span></div>
+                <div class="ad__end">
+                  <b class="ad__logo">JS<em>.</em></b>
+                  <span class="ad__tag">Creative developer</span>
+                  <span class="ad__cta">Let's talk →</span>
+                </div>
+              </a>
+            </div>
 
-            document.onkeydown = function (e) {
-                e = e || window.event
-                if (e.keyCode == 13) {
-                    login(password[0].value)
-                }
-            }
-        </script>
-    </body>
+            <div class="demo-foot">
+              <div class="ad-dots" role="group" aria-label="Jump to frame"></div>
+              <code class="demo-log" data-log>loop 0/3</code>
+            </div>
+          </div>
+        </article>
+
+        <!-- B · HTML MAILS -->
+        <article class="kind kind--flip reveal" id="mails">
+          <div class="kind__copy">
+            <p class="kind__index"><span>B</span> HTML mails</p>
+            <h3>Mail that survives Outlook</h3>
+            <p>Over a thousand hand-coded production mails for Nationale Loterij, Telenet, KIA, Mazda, MediaMarkt and many more. That means table-based layouts, light and dark mode, fluid-hybrid stacking and buttons that hold up everywhere.</p>
+            <p class="kind__aside">Yes, I work at VML. And yes, I still write VML: it's how Outlook draws a rounded button.</p>
+            <ul class="tags"><li>HTML</li><li>MSO conditionals</li><li>VML</li><li>Dark mode</li><li>Responsive</li></ul>
+            <p class="kind__hint">↳ Switch clients, go mobile, or peek at the source.</p>
+          </div>
+
+          <div class="demo demo--mail" data-mail data-client="gmail" data-device="desktop">
+            <div class="demo-bar">
+              <div class="seg" role="group" aria-label="Email client">
+                <button type="button" data-client="gmail" aria-pressed="true">Gmail</button>
+                <button type="button" data-client="outlook" aria-pressed="false">Outlook 2016</button>
+                <button type="button" data-client="dark" aria-pressed="false">Dark mode</button>
+              </div>
+              <div class="seg" role="group" aria-label="Device">
+                <button type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+                <button type="button" data-device="mobile" aria-pressed="false">Mobile</button>
+              </div>
+              <button type="button" class="demo-btn" data-source aria-pressed="false">&lt;/&gt; Source</button>
+            </div>
+
+            <div class="mail-window">
+              <div class="mail-chrome"><span class="mail-app" data-app>Gmail</span><span class="mail-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <div class="mail-head">
+                <span class="mail-avatar" aria-hidden="true">JS</span>
+                <div class="mail-meta">
+                  <p><strong>Joran Schaefer</strong> <span>&lt;joran.schaefer@gmail.com&gt;</span></p>
+                  <p class="mail-subject">Your skills report is ready</p>
+                  <p class="mail-pre">11 years, 1000+ mails, zero excuses.</p>
+                </div>
+                <time data-clock>--:--</time>
+              </div>
+
+              <div class="mail-canvas">
+                <table class="m" role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td class="m-head">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+                        <td class="m-logo">JS<span>.</span><em class="m-pin">Web font → Arial fallback</em></td>
+                        <td class="m-issue" align="right">Skills report · Q3</td>
+                      </tr></table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="m-hero">
+                      <em class="m-pin">Gradient → solid bgcolor</em>
+                      <p class="m-kicker">Issue #1000+</p>
+                      <h4>Tables aren't dead. They moved to email.</h4>
+                      <p>Eleven years of inboxes in one mail. It even works in Outlook.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="m-grid">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="m-col"><div class="m-card"><em class="m-pin">border-radius → square</em><b>◐</b><strong>Dark mode</strong><p>Colours and logos that still look intentional when the client flips them.</p></div></td>
+                          <td class="m-col"><div class="m-card"><b>⇲</b><strong>Fluid-hybrid</strong><p>Columns that stack on a 320px screen, even without media queries.</p></div></td>
+                        </tr>
+                        <tr>
+                          <td class="m-col"><div class="m-card"><b>▣</b><strong>Bulletproof</strong><p>Buttons in VML for Outlook, CSS for everyone else. Always clickable.</p></div></td>
+                          <td class="m-col"><div class="m-card"><b>✓</b><strong>Tested</strong><p>Checked across the clients that matter before a single send.</p></div></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="m-survived">
+                      <p>Outlook versions survived</p>
+                      <div class="m-chips"><span>2007</span><span>2010</span><span>2013</span><span>2016</span><span>2019</span><span>365</span><span>New</span></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="m-cta" align="center">
+                      <a class="m-btn" href="mailto:joran.schaefer@gmail.com?subject=Let's%20talk">Book a call</a>
+                      <em class="m-pin m-pin--good">Still round: &lt;v:roundrect&gt;</em>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="m-foot">You got this mail because you scrolled this far.<br /><a href="#contact">Unsubscribe from being impressed</a></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="mail-source" hidden>
+                <pre class="code"><code data-mail-code></code></pre>
+              </div>
+            </div>
+            <div class="demo-foot"><code class="demo-log" data-mail-log></code></div>
+          </div>
+        </article>
+
+        <!-- C · CAMPAIGN PAGES -->
+        <article class="kind reveal" id="sites">
+          <div class="kind__copy">
+            <p class="kind__index"><span>C</span> Campaign pages &amp; minisites</p>
+            <h3>Pages with a deadline</h3>
+            <p>Launch pages, contests and minisites that go live with a campaign and have to be fast, tracked and on brand from day one.</p>
+            <p class="kind__aside">This page is one too. It's built with Vite, uses no framework and has one dependency.</p>
+            <p class="kind__hint">↳ Remix the page and watch its code change. The files on the right are the real source.</p>
+          </div>
+
+          <div class="demo demo--code" data-site>
+            <div class="code-win">
+              <div class="code-tabs" role="tablist" aria-label="Source files"></div>
+              <div class="code-body">
+                <pre class="code-gutter" aria-hidden="true"></pre>
+                <pre class="code"><code data-code></code></pre>
+              </div>
+              <div class="code-foot"><span data-code-stats></span><span data-code-total></span></div>
+            </div>
+
+            <div class="remix">
+              <p class="remix__title">Remix this page</p>
+              <div class="remix__row">
+                <span class="remix__label">Accent</span>
+                <div class="swatches" data-swatches></div>
+              </div>
+              <label class="remix__row">
+                <span class="remix__label">Corner radius <output data-out="radius">14px</output></span>
+                <input type="range" min="0" max="32" value="14" data-token="radius" />
+              </label>
+              <label class="remix__row">
+                <span class="remix__label">Marquee speed <output data-out="marquee">45s</output></span>
+                <input type="range" min="6" max="90" value="45" data-token="marquee" dir="rtl" />
+              </label>
+              <div class="remix__row">
+                <span class="remix__label">Display font</span>
+                <div class="seg seg--small" role="group" aria-label="Display font" data-fonts>
+                  <button type="button" data-font="bebas" aria-pressed="true">Bebas</button>
+                  <button type="button" data-font="serif" aria-pressed="false">Serif</button>
+                  <button type="button" data-font="comic" aria-pressed="false">Comic Sans</button>
+                </div>
+              </div>
+              <button type="button" class="demo-btn" data-reset>Reset</button>
+              <p class="remix__toast" data-toast aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- <div class="thumbs reveal">
+          <p class="thumbs__label">Recent sites under DEFINED</p>
+          <a class="thumb" href="https://www.defined-detailing.be" target="_blank" rel="noopener"><img src="/work/defined.jpg" alt="" loading="lazy" /><span>Defined Detailing ↗</span><small>PHP · GSAP · mPDF</small></a>
+          <div class="thumb"><img src="/work/antwrap.png" alt="" loading="lazy" /><span>Antwrap</span><small>Vite · Tailwind · CSS 3D</small></div>
+          <div class="thumb"><img src="/work/shogun.png" alt="" loading="lazy" /><span>Shogun PDR</span><small>WordPress theme</small></div>
+          <a class="thumb" href="https://www.lmnt.be" target="_blank" rel="noopener"><img src="/work/lmnt.png" alt="" loading="lazy" /><span>LMNT Jiu-Jitsu ↗</span><small>PHP · GSAP</small></a>
+        </div> -->
+      </section>
+
+      <!-- LAB -->
+      <section id="lab" class="section section--paper">
+        <header class="section__head">
+          <span class="section__num">02</span>
+          <h2>Lab</h2>
+          <p>Tools I build between campaigns and things I make after hours, mostly to learn something, sometimes just to make people laugh.</p>
+        </header>
+
+        <ul class="lab">
+          <li class="lab__row reveal"><span class="lab__name">Paper Plane</span><span class="lab__what">Send test mails to a whole list in one go</span><span class="lab__tech">Express</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Artificial Window</span><span class="lab__what">A fake window for the office TV, synced to the real weather</span><span class="lab__tech">Raspberry Pi</span></li>
+          <li class="lab__row reveal"><span class="lab__name">De rol is op</span><span class="lab__what">Tells facilities which toilet ran out of paper. Used daily.</span><span class="lab__tech">Tailwind + GSAP</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Back to the Stineties</span><span class="lab__what">Farewell site for a colleague, with an arcade game built in</span><span class="lab__tech">Canvas 2D</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Drawnie</span><span class="lab__what">Multiplayer Pictionary for the office, in Dutch</span><span class="lab__tech">WebSockets</span></li>
+          <li class="lab__row reveal"><span class="lab__name">CodeCars Rally Run</span><span class="lab__what">Browser rally racer</span><span class="lab__tech">Three.js</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Rocket Powerrrr</span><span class="lab__what">Three.js rocket experiment</span><span class="lab__tech">Three.js</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Arena</span><span class="lab__what">3D platformer prototype</span><span class="lab__tech">Three.js + Vue</span></li>
+          <li class="lab__row reveal"><span class="lab__name">NotionCopy</span><span class="lab__what">Copy a single Notion database cell, finally</span><span class="lab__tech">Chrome MV3</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Mmmmmmmm</span><span class="lab__what">Can't decide what to get at the frituur? It picks for you</span><span class="lab__tech">Vite</span></li>
+        </ul>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <header class="section__head">
+          <span class="section__num">03</span>
+          <h2>Then &amp; now</h2>
+          <p>My 2015 CV had skill bars for everything I thought I could do. Some of them aged well.</p>
+        </header>
+
+        <div class="about">
+          <div class="about__col reveal">
+            <h3 class="about__label">2015</h3>
+            <ul class="bars">
+              <li style="--w:88%;--c:#4a8bc9">Photoshop</li>
+              <li style="--w:74%;--c:#f07f22">Illustrator</li>
+              <li style="--w:54%;--c:#b52f73">InDesign</li>
+              <li style="--w:54%;--c:#e0262a" class="bars--dead">Flash <small>RIP</small></li>
+              <li style="--w:54%;--c:#bfa5d1">After Effects</li>
+              <li style="--w:88%;--c:#e8792a">HTML5</li>
+              <li style="--w:80%;--c:#3c97d4">CSS3</li>
+              <li style="--w:70%;--c:#253c51">jQuery</li>
+              <li style="--w:60%;--c:#5b6aa8">PHP</li>
+            </ul>
+          </div>
+          <div class="about__col reveal">
+            <h3 class="about__label">Now</h3>
+            <ul class="bars bars--now">
+              <li style="--w:92%">HTML &amp; CSS / SCSS</li>
+              <li style="--w:86%">JavaScript · GSAP</li>
+              <li style="--w:80%">Vite · Node tooling</li>
+              <li style="--w:95%">HTML Mail Development</li>
+              <li style="--w:82%">PHP · Laravel · WordPress</li>
+              <li style="--w:95%">Creative Ads</li>
+              <li style="--w:66%">Vue · React · Astro</li>
+              <li style="--w:58%">Three.js / WebGL</li>
+              <li style="--w:85%">Photoshop · Illustrator · Figma</li>
+            </ul>
+          </div>
+          <div class="about__col about__story reveal">
+            <h3 class="about__label">Path</h3>
+            <ol class="timeline">
+              <li><time>2006–11</time>Student Graphic Techniques</li>
+              <li><time>2010–12</time>Student Advertising Design</li>
+              <li><time>2013–15</time>Student Web Development</li>
+              <li><time>2015</time>Intern @These Days</li>
+              <li><time>2015–now</time>Creative developer @VML</li>
+              <li><time>Weekends</time>Part-time car detailer</li>
+            </ol>
+            <p class="about__off">Off-screen: I listen to just about every kind of music, and I love washing cars.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="contact">
+        <p class="eyebrow">Got a project, a banner problem, or just a dirty car?</p>
+        <a class="contact__big" href="mailto:joran.schaefer@gmail.com">Let's talk<span>↗</span></a>
+        <ul class="contact__list">
+          <li><span>Email</span><a href="mailto:joran.schaefer@gmail.com">joran.schaefer@gmail.com</a></li>
+          <li><span>Phone</span><a href="tel:+32470928716">+32 470 92 87 16</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/joranschaefer" target="_blank" rel="noopener">in/joranschaefer</a></li>
+          <li><span>GitHub</span><a href="https://github.com/joranschaefer" target="_blank" rel="noopener">joranschaefer</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span data-year></span> Joran Schaefer &amp; Claude Eeej Aaaj</span>
+      <span>Powered by Vite. No LLMs were harmed in the making of this webthing.</span>
+    </footer>
+
+  </body>
 </html>
