@@ -1,5 +1,5 @@
-import './banner.css'
-import bannerCss from './banner.css?raw'
+import './banner.scss'
+import bannerCss from './banner.scss?inline'
 
 const FRAME_MS = 2000
 const LOOP_PAUSE_MS = 2600
@@ -94,7 +94,7 @@ if (root) {
     setTimeout(() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' }), 700)
   })
 
-  // Real weight: this banner's markup + its stylesheet
+  // Real weight: this banner's markup + its compiled stylesheet
   const bytes = new Blob([ad.outerHTML, bannerCss]).size
   document.querySelector('[data-weight]').textContent = `${(bytes / 1024).toFixed(1)} kB`
 

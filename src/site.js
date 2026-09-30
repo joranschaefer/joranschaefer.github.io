@@ -1,9 +1,9 @@
 import { highlight } from './highlight.js'
 import mainSrc from './main.js?raw'
 import bannerSrc from './banner.js?raw'
-import bannerCssSrc from './banner.css?raw'
+import bannerScssSrc from './banner.scss?raw'
 import mailSrc from './mail.js?raw'
-import styleSrc from './style.css?raw'
+import styleSrc from './style.scss?raw'
 import siteSrc from './site.js?raw'
 
 const DEFAULTS = { accent: '#ff5a1f', radius: 14, marquee: 45, font: 'bebas' }
@@ -47,10 +47,10 @@ if (root) {
     { name: 'tokens.css', lang: 'css', src: () => tokensSrc(tokens), live: true },
     { name: 'main.js', lang: 'js', src: () => mainSrc },
     { name: 'banner.js', lang: 'js', src: () => bannerSrc },
-    { name: 'banner.css', lang: 'css', src: () => bannerCssSrc },
+    { name: 'banner.scss', lang: 'scss', src: () => bannerScssSrc },
     { name: 'mail.js', lang: 'js', src: () => mailSrc },
     { name: 'site.js', lang: 'js', src: () => siteSrc, note: 'this viewer' },
-    { name: 'style.css', lang: 'css', src: () => styleSrc },
+    { name: 'style.scss', lang: 'scss', src: () => styleSrc },
   ]
   let active = files[0]
 

@@ -1,4 +1,4 @@
-import './style.css'
+import './style.scss'
 import './banner.js'
 import './mail.js'
 import './site.js'

@@ -1,4 +1,4 @@
-import './mail.css'
+import './mail.scss'
 import { highlight } from './highlight.js'
 
 const SOURCE = `<!-- The button from this mail -->

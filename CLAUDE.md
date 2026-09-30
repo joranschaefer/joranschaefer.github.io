@@ -8,7 +8,7 @@ Personal portfolio site for Joran Schaefer, creative developer at VML (formerly 
 - `npm run build` — production build to `dist/`
 - `npm run preview` — serve the build (port 4173)
 
-Only dependency: `vite`. No framework. Keep it that way: the page itself claims "no framework, one dependency".
+Dependencies: `vite` and `sass-embedded` (styles are SCSS, compiled by Vite). No framework. Keep it that way: the page itself claims "no framework, two dependencies: Vite and Sass".
 
 ## Structure
 
@@ -16,12 +16,12 @@ Only dependency: `vite`. No framework. Keep it that way: the page itself claims 
 | --- | --- |
 | `index.html` | All page markup and most copy |
 | `src/main.js` | Entry: imports everything, renders the client marquee, clock, scroll reveals, Lab cursor bubble |
-| `src/style.css` | Global styles and design tokens (`:root`), dark mode via `prefers-color-scheme` |
+| `src/style.scss` | Global styles and design tokens (`:root`), dark mode via `prefers-color-scheme` |
 | `src/data/clients.json` | Client names for the marquee, alphabetical. Edit this to add or remove clients |
-| `src/banner.js` / `banner.css` | Work A: the demo banner (size switcher, frame timeline, 3-loop IAB limit, clickTag, live kB weight) |
-| `src/mail.js` / `mail.css` | Work B: the demo email (Gmail / Outlook 2016 / dark mode, desktop/mobile, VML source view) |
+| `src/banner.js` / `banner.scss` | Work A: the demo banner (size switcher, frame timeline, 3-loop IAB limit, clickTag, live kB weight of the compiled CSS via `?inline`) |
+| `src/mail.js` / `mail.scss` | Work B: the demo email (Gmail / Outlook 2016 / dark mode, desktop/mobile, VML source view) |
 | `src/site.js` | Work C: code viewer showing the real source via `?raw` imports, plus the "Remix this page" token panel |
-| `src/highlight.js` | Tiny regex syntax highlighter (js, css, html) used by the code demos |
+| `src/highlight.js` | Tiny regex syntax highlighter (js, css, scss, html) used by the code demos |
 | `public/work/` | Screenshots of DEFINED sites (currently unused, thumbnails are commented out) |
 
 ## Page sections
@@ -34,7 +34,7 @@ Only dependency: `vite`. No framework. Keep it that way: the page itself claims 
 
 ## Conventions
 
-- Design tokens live on `:root` in `style.css`. The remix panel overrides `--accent`, `--radius`, `--marquee-speed` and `--display` at runtime, so use those variables instead of hard-coded values where it makes sense.
+- Design tokens live on `:root` in `style.scss`. The remix panel overrides `--accent`, `--radius`, `--marquee-speed` and `--display` at runtime, so use those variables instead of hard-coded values where it makes sense. Anything that must change at runtime stays a CSS custom property; Sass `$variables`, mixins and loops are for build-time constants only.
 - Fonts: Bebas Neue (display), Instrument Sans (body), JetBrains Mono (labels/code), from Google Fonts.
 - Copy is British English ("colours", "centre"). Brand names are spelled the way the brand writes them: MediaMarkt, bpost, Škoda, KIA.
 - `site.js` shows its own source files in the viewer. Keep them readable, and avoid regex literals in shown files (the highlighter doesn't handle them). Regex belongs in `highlight.js`, which isn't shown.
