@@ -2,19 +2,19 @@
 const RULES = {
   js: [
     /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|(`(?:\\[\s\S]|[^`\\])*`|'(?:\\.|[^'\\\n])*'|"(?:\\.|[^"\\\n])*")|\b(import|from|const|let|function|return|if|else|for|of|new|async|await|export|default|true|false|null|this|break)\b|\b(\d+(?:\.\d+)?)\b/g,
-    ['c', 's', 'k', 'n'],
+    ['comment', 'string', 'keyword', 'number'],
   ],
   css: [
     /(\/\*[\s\S]*?\*\/)|('[^'\n]*'|"[^"\n]*")|(#[0-9a-fA-F]{3,8}\b)|(--[\w-]+)|(@[\w-]+)|([\w-]+)(?=\s*:[^:{};]*;)|(\b\d*\.?\d+(?:px|rem|em|%|s|ms|deg|vw|vh|fr|ch|cqmin|cqh|cqw)?)/g,
-    ['c', 's', 'n', 'v', 'k', 'p', 'n'],
+    ['comment', 'string', 'number', 'var', 'keyword', 'prop', 'number'],
   ],
   scss: [
     /(\/\*[\s\S]*?\*\/|\/\/[^\n]*)|('[^'\n]*'|"[^"\n]*")|(#[0-9a-fA-F]{3,8}\b)|(--[\w-]+|\$[\w-]+)|(@[\w-]+)|([\w-]+)(?=\s*:[^:{};]*;)|(\b\d*\.?\d+(?:px|rem|em|%|s|ms|deg|vw|vh|fr|ch|cqmin|cqh|cqw)?)/g,
-    ['c', 's', 'n', 'v', 'k', 'p', 'n'],
+    ['comment', 'string', 'number', 'var', 'keyword', 'prop', 'number'],
   ],
   html: [
     /(<!--[\s\S]*?-->|<!\[endif\]-->)|(<\/?[\w:]+|\/?>)|([\w:-]+)(?==)|("[^"]*")/g,
-    ['c', 'k', 'p', 's'],
+    ['comment', 'keyword', 'prop', 'string'],
   ],
 }
 
@@ -27,7 +27,7 @@ export function highlight(src, lang) {
   for (const m of src.matchAll(re)) {
     const group = m.slice(1).findIndex((g) => g !== undefined)
     out += esc(src.slice(last, m.index))
-    out += `<span class="t-${classes[group]}">${esc(m[0])}</span>`
+    out += `<span class="token token--${classes[group]}">${esc(m[0])}</span>`
     last = m.index + m[0].length
   }
   return out + esc(src.slice(last))

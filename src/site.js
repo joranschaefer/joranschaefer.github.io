@@ -1,8 +1,8 @@
 import { highlight } from './highlight.js'
 import mainSrc from './main.js?raw'
-import bannerSrc from './banner.js?raw'
-import bannerScssSrc from './banner.scss?raw'
-import mailSrc from './mail.js?raw'
+// import bannerSrc from './banner.js?raw'
+// import bannerScssSrc from './banner.scss?raw'
+// import mailSrc from './mail.js?raw'
 import styleSrc from './style.scss?raw'
 import siteSrc from './site.js?raw'
 
@@ -38,17 +38,17 @@ if (root) {
   const tokens = { ...DEFAULTS }
   const html = document.documentElement
   const code = root.querySelector('[data-code]')
-  const gutter = root.querySelector('.code-gutter')
+  const gutter = root.querySelector('.code__gutter')
   const stats = root.querySelector('[data-code-stats]')
-  const tabsEl = root.querySelector('.code-tabs')
+  const tabsEl = root.querySelector('.code__tabs')
   const toast = root.querySelector('[data-toast]')
 
   const files = [
     { name: 'tokens.css', lang: 'css', src: () => tokensSrc(tokens), live: true },
     { name: 'main.js', lang: 'js', src: () => mainSrc },
-    { name: 'banner.js', lang: 'js', src: () => bannerSrc },
-    { name: 'banner.scss', lang: 'scss', src: () => bannerScssSrc },
-    { name: 'mail.js', lang: 'js', src: () => mailSrc },
+    // { name: 'banner.js', lang: 'js', src: () => bannerSrc },
+    // { name: 'banner.scss', lang: 'scss', src: () => bannerScssSrc },
+    // { name: 'mail.js', lang: 'js', src: () => mailSrc },
     { name: 'site.js', lang: 'js', src: () => siteSrc, note: 'this viewer' },
     { name: 'style.scss', lang: 'scss', src: () => styleSrc },
   ]
@@ -73,8 +73,9 @@ if (root) {
   const tabs = files.map((file) => {
     const tab = document.createElement('button')
     tab.type = 'button'
+    tab.className = 'code__tab'
     tab.setAttribute('role', 'tab')
-    tab.innerHTML = file.live ? `<i class="live"></i>${file.name}` : file.name
+    tab.innerHTML = file.live ? `<i class="code__live"></i>${file.name}` : file.name
     if (file.note) tab.title = file.note
     tab.addEventListener('click', () => select(file))
     tabsEl.append(tab)
@@ -85,7 +86,7 @@ if (root) {
     active = file
     tabs.forEach((t, i) => t.setAttribute('aria-selected', files[i] === file))
     render()
-    root.querySelector('.code-body').scrollTop = 0
+    root.querySelector('.code__body').scrollTop = 0
   }
 
   const say = (msg) => {
@@ -109,7 +110,7 @@ if (root) {
   const swatches = SWATCHES.map(([color, name]) => {
     const s = document.createElement('button')
     s.type = 'button'
-    s.className = 'swatch'
+    s.className = 'swatches__item'
     s.dataset.color = color
     s.style.background = color
     s.title = name

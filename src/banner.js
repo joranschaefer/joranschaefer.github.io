@@ -12,7 +12,7 @@ if (root) {
   const viewport = root.querySelector('.ad-viewport')
   const log = root.querySelector('[data-log]')
   const dotsWrap = root.querySelector('.ad-dots')
-  const frames = [...ad.querySelectorAll('.ad__f, .ad__end')]
+  const frames = [...ad.querySelectorAll('.ad__frame')]
   let timers = []
   let loop = 0
   let size = [300, 600]
@@ -20,6 +20,7 @@ if (root) {
   const dots = frames.map((_, i) => {
     const dot = document.createElement('button')
     dot.type = 'button'
+    dot.className = 'ad-dots__dot'
     dot.setAttribute('aria-label', `Frame ${i + 1}`)
     dot.addEventListener('click', () => {
       stop()

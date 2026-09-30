@@ -19,17 +19,15 @@ $body: 'Instrument Sans', Arial, sans-serif;
   border: 1px solid $ink;
   font-family: $display;
 
-  &:hover .ad__cta { background: $paper; color: $ink; }
-}
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent 0 14px, rgb(0 0 0 / .06) 14px 28px);
+    background-size: 200% 200%;
+    animation: ad-stripes 8s linear infinite;
+  }
 
-.ad__bg {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(-45deg, transparent 0 14px, rgb(0 0 0 / .06) 14px 28px);
-  background-size: 200% 200%;
-  animation: ad-stripes 8s linear infinite;
-
-  i {
+  &__blob {
     position: absolute;
     border-radius: 50%;
     border: 2px solid $ink;
@@ -40,71 +38,70 @@ $body: 'Instrument Sans', Arial, sans-serif;
     &:nth-child(2) { width: 40cqmin; height: 40cqmin; right: -8cqmin; bottom: 8cqmin; animation-delay: -2s; background: $ink; opacity: .08; }
     &:nth-child(3) { width: 16cqmin; height: 16cqmin; right: 22cqmin; top: 12cqmin; animation-delay: -4s; background: $paper; opacity: .5; border: 0; }
   }
+
+  &__frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3cqmin;
+    padding: 8cqmin;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(14%);
+    transition: opacity .45s ease, transform .7s $ease;
+
+    &.is-past { transform: translateY(-14%); }
+    &.is-on { opacity: 1; transform: none; }
+  }
+
+  &__big { font-size: 36cqmin; line-height: .82; font-weight: 400; }
+
+  &__text {
+    font: 600 7.5cqmin/1.15 $body;
+    max-width: 22ch;
+  }
+  &__frame--hello &__text { font: 12cqmin/.9 $display; }
+
+  &__logo { font: 400 30cqmin/.8 $display; }
+  &__logo-dot { font-style: normal; color: $paper; }
+  &__tag { font: 600 7cqmin/1.2 $body; }
+
+  &__cta {
+    margin-top: 2cqmin;
+    padding: 3.2cqmin 6cqmin;
+    border-radius: 99px;
+    background: $ink;
+    color: $paper;
+    font: 600 6.5cqmin/1 $body;
+    animation: ad-nudge 1.6s ease-in-out infinite;
+  }
+  &:hover &__cta { background: $paper; color: $ink; }
 }
 
 @keyframes ad-stripes { to { background-position: 100% 100%; } }
 @keyframes ad-float { to { transform: translate(6cqmin, 8cqmin) rotate(20deg); } }
-
-.ad__f,
-.ad__end {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3cqmin;
-  padding: 8cqmin;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(14%);
-  transition: opacity .45s ease, transform .7s $ease;
-
-  &.is-past { transform: translateY(-14%); }
-  &.is-on { opacity: 1; transform: none; }
-}
-
-.ad__f {
-  strong { font-size: 36cqmin; line-height: .82; font-weight: 400; }
-  span {
-    font: 600 7.5cqmin/1.15 $body;
-    max-width: 22ch;
-  }
-}
-.ad__f--hello span { font: 12cqmin/.9 $display; }
-
-.ad__logo {
-  font: 400 30cqmin/.8 $display;
-
-  em { font-style: normal; color: $paper; }
-}
-.ad__tag { font: 600 7cqmin/1.2 $body; }
-.ad__cta {
-  margin-top: 2cqmin;
-  padding: 3.2cqmin 6cqmin;
-  border-radius: 99px;
-  background: $ink;
-  color: $paper;
-  font: 600 6.5cqmin/1 $body;
-  animation: ad-nudge 1.6s ease-in-out infinite;
-}
 @keyframes ad-nudge { 50% { transform: scale(1.06); } }
 
 // Wide formats (leaderboards, mobile banners): go horizontal
 @container (aspect-ratio > 2.5) {
-  .ad__f,
-  .ad__end {
-    flex-direction: row;
-    gap: 5cqw;
-    padding: 0 6cqw;
-    transform: translateX(8%);
+  .ad {
+    &__frame {
+      flex-direction: row;
+      gap: 5cqw;
+      padding: 0 6cqw;
+      transform: translateX(8%);
 
-    &.is-past { transform: translateX(-8%); }
+      &.is-past { transform: translateX(-8%); }
+    }
+
+    &__big { font-size: 64cqh; }
+    &__text { font-size: 17cqh; max-width: 16ch; text-align: left; }
+    &__frame--hello &__text { font-size: 34cqh; }
+    &__logo { font-size: 60cqh; }
+    &__tag { font-size: 16cqh; max-width: 10ch; text-align: left; }
+    &__cta { font-size: 15cqh; padding: 7cqh 12cqh; margin: 0; }
   }
-  .ad__f strong { font-size: 64cqh; }
-  .ad__f span { font-size: 17cqh; max-width: 16ch; text-align: left; }
-  .ad__f--hello span { font-size: 34cqh; }
-  .ad__logo { font-size: 60cqh; }
-  .ad__tag { font-size: 16cqh; max-width: 10ch; text-align: left; }
-  .ad__cta { font-size: 15cqh; padding: 7cqh 12cqh; margin: 0; }
 }

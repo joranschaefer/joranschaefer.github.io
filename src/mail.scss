@@ -1,4 +1,4 @@
-// Email client mock + the mail itself. Modes: data-client (gmail|outlook|dark), data-device (desktop|mobile)
+// Email client mock (.mail) + the mail itself (.email). Modes: data-client (gmail|outlook|dark), data-device (desktop|mobile)
 $ink: #17292b;
 $paper: #f2efe8;
 $orange: #ff5a1f;
@@ -7,82 +7,118 @@ $ease: cubic-bezier(.2, .8, .2, 1);
 $display: 'Bebas Neue', Impact, sans-serif;
 $mono: 'JetBrains Mono', monospace;
 
+$outlook: "[data-client='outlook']";
+$dark: "[data-client='dark']";
+$mobile: "[data-device='mobile']";
+
 @mixin mail-label($size, $spacing: .08em) {
   font: #{$size}/1 $mono;
   text-transform: uppercase;
   letter-spacing: $spacing;
 }
 
-.mail-window {
+// The mobile preview and real small screens stack the mail the same way
+@mixin stacked {
+  #{$mobile} & { @content; }
+  @media (max-width: 560px) { @content; }
+}
+
+.mail {
   background: #fff;
   color: #1d1d1f;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: 0 30px 60px -30px #0006;
-}
-.mail-chrome {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 16px;
-  background: #f1f3f4;
-  font: 500 12px/1 var(--mono);
-  color: #5f6368;
-  transition: background .3s, color .3s;
-}
-.mail-app::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ea4335; margin-right: 8px; vertical-align: -1px; }
-.mail-dots {
-  display: flex;
-  gap: 6px;
 
-  i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; opacity: .3; }
-}
+  #{$dark} & { background: #1c1c1e; color: #f2f2f7; }
 
-.mail-head {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 12px;
-  align-items: start;
-  padding: 16px 18px;
-  border-bottom: 1px solid #0001;
-  font-size: 14px;
-  line-height: 1.35;
+  &__chrome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: #f1f3f4;
+    font: 500 12px/1 var(--mono);
+    color: #5f6368;
+    transition: background .3s, color .3s;
 
-  time { font: 12px/1 var(--mono); color: $grey; }
-}
-.mail-avatar {
-  width: 38px; height: 38px;
-  display: grid; place-items: center;
-  border-radius: 50%;
-  background: $ink; color: $paper;
-  font: 18px/1 var(--display);
-}
-.mail-meta {
-  min-width: 0;
+    #{$outlook} & { background: #0f6cbd; color: #fff; }
+    #{$dark} & { background: #2c2c2e; color: #aeaeb2; }
+  }
 
-  span { color: $grey; font-size: 12.5px; overflow-wrap: anywhere; }
-}
-.mail-subject { font-weight: 600; font-size: 16px; }
-.mail-pre { color: $grey; }
+  &__app::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ea4335;
+    margin-right: 8px;
+    vertical-align: -1px;
 
-.mail-canvas {
-  padding: 24px 16px;
-  background: #eceff1;
-  max-height: 560px;
-  overflow: auto;
-  transition: background .3s;
-}
-.mail-source {
-  background: #0f1a1b;
-  max-height: 560px;
-  overflow: auto;
+    #{$outlook} & { background: #fff; border-radius: 2px; }
+    #{$dark} & { background: #0a84ff; }
+  }
 
-  .code { padding: 20px; }
+  &__dots { display: flex; gap: 6px; }
+  &__dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; opacity: .3; }
+
+  &__head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: start;
+    padding: 16px 18px;
+    border-bottom: 1px solid #0001;
+    font-size: 14px;
+    line-height: 1.35;
+
+    #{$dark} & { border-color: #ffffff14; }
+  }
+
+  &__avatar {
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: $ink; color: $paper;
+    font: 18px/1 var(--display);
+
+    #{$dark} & { background: $paper; color: $ink; }
+  }
+
+  &__meta { min-width: 0; }
+
+  &__address {
+    color: $grey;
+    font-size: 12.5px;
+    overflow-wrap: anywhere;
+
+    @media (max-width: 560px) { display: none; }
+  }
+
+  &__subject { font-weight: 600; font-size: 16px; }
+  &__pre { color: $grey; }
+  &__time { font: 12px/1 var(--mono); color: $grey; }
+
+  &__canvas {
+    padding: 24px 16px;
+    background: #eceff1;
+    max-height: 560px;
+    overflow: auto;
+    transition: background .3s;
+
+    #{$outlook} & { background: #f3f2f1; }
+    #{$dark} & { background: #000; }
+    @media (max-width: 560px) { max-height: 300px; }
+  }
+
+  &__source { background: #0f1a1b; max-height: 560px; overflow: auto; }
+  &__code { padding: 20px; }
 }
 
 // ----- the mail -----
-.m {
+.email {
   width: 100%;
   max-width: 560px;
   margin: 0 auto;
@@ -92,59 +128,94 @@ $mono: 'JetBrains Mono', monospace;
   font-family: 'Instrument Sans', Arial, sans-serif;
   transition: max-width .5s $ease, background .3s, color .3s;
 
-  td { position: relative; vertical-align: top; }
-  p, h4 { margin: 0; }
-}
+  #{$outlook} &,
+  #{$outlook} & * { font-family: Arial, Helvetica, sans-serif !important; }
+  #{$dark} & { background: #161a1b; color: #ecebe6; }
+  #{$mobile} & { max-width: 340px; }
 
-.m-head { padding: 20px 28px; border-bottom: 1px solid #{$ink}1a; }
-.m-logo {
-  font: 34px/1 $display;
+  // Every table cell: the Outlook pins are positioned against it
+  &__head, &__logo, &__issue, &__hero, &__grid, &__col, &__survived, &__cta, &__foot {
+    position: relative;
+    vertical-align: top;
+  }
 
-  span { color: $orange; }
-}
-.m-issue { @include mail-label(11px); line-height: 34px; color: $grey; }
+  &__head {
+    padding: 20px 28px;
+    border-bottom: 1px solid #{$ink}1a;
 
-.m-hero {
-  padding: 40px 28px;
-  color: $paper;
-  background-color: $ink;
-  background-image: radial-gradient(circle at 85% 20%, $orange 0 60px, transparent 61px), linear-gradient(135deg, $ink, #2c4a4d);
+    #{$dark} & { border-color: #ffffff1a; }
+  }
 
-  h4 { font: 44px/.92 $display; max-width: 12ch; margin-bottom: 12px; }
-  p:last-child { font-size: 15px; opacity: .85; max-width: 34ch; }
-}
-.m-kicker { @include mail-label(11px, .1em); color: #ff8a5c; margin-bottom: 14px !important; }
+  &__logo {
+    font: 34px/1 $display;
 
-.m-grid { padding: 16px 16px 4px; }
-.m-col { width: 50%; padding: 6px; }
-.m-card {
-  position: relative;
-  height: 100%;
-  padding: 18px;
-  border-radius: 14px;
-  background: #f4f1ea;
-  font-size: 13.5px;
-  line-height: 1.45;
-  transition: border-radius .3s, background .3s;
+    #{$outlook} & { font-weight: 700; font-size: 26px; }
+  }
+  &__logo-dot { color: $orange; }
 
-  b { display: block; font-size: 22px; color: $orange; margin-bottom: 6px; }
-  strong { display: block; font-size: 15px; margin-bottom: 4px; }
-  p { color: #4d5a5b; }
-}
+  &__issue { @include mail-label(11px); line-height: 34px; color: $grey; }
 
-.m-survived {
-  padding: 16px 28px 4px;
-  text-align: center;
+  &__hero {
+    padding: 40px 28px;
+    color: $paper;
+    background-color: $ink;
+    background-image: radial-gradient(circle at 85% 20%, $orange 0 60px, transparent 61px), linear-gradient(135deg, $ink, #2c4a4d);
 
-  p { @include mail-label(11px); color: $grey; margin-bottom: 10px !important; }
-}
-.m-chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
+    #{$outlook} & { background-image: none; }
+    #{$mobile} & { padding: 32px 22px; }
+  }
 
-  span {
+  &__kicker { @include mail-label(11px, .1em); color: #ff8a5c; margin-bottom: 14px; }
+
+  &__title {
+    margin: 0 0 12px;
+    font: 44px/.92 $display;
+    max-width: 12ch;
+
+    #{$outlook} & { font-weight: 700 !important; font-size: 30px; line-height: 1.05; }
+    @include stacked { font-size: 36px; }
+  }
+
+  &__intro { font-size: 15px; opacity: .85; max-width: 34ch; }
+
+  &__grid { padding: 16px 16px 4px; }
+
+  &__col {
+    width: 50%;
+    padding: 6px;
+
+    @include stacked { display: block; width: 100%; }
+  }
+
+  &__card {
+    position: relative;
+    height: 100%;
+    padding: 18px;
+    border-radius: 14px;
+    background: #f4f1ea;
+    font-size: 13.5px;
+    line-height: 1.45;
+    transition: border-radius .3s, background .3s;
+
+    #{$outlook} & { border-radius: 0; }
+    #{$dark} & { background: #222a2b; }
+  }
+
+  &__icon { display: block; font-size: 22px; color: $orange; margin-bottom: 6px; }
+  &__card-title { display: block; font-size: 15px; margin-bottom: 4px; }
+
+  &__card-text {
+    color: #4d5a5b;
+
+    #{$dark} & { color: #a9b5b4; }
+  }
+
+  &__survived { padding: 16px 28px 4px; text-align: center; }
+  &__survived-label { @include mail-label(11px); color: $grey; margin-bottom: 10px; }
+
+  &__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+
+  &__chip {
     font: 12px/1 $mono;
     padding: 6px 9px;
     border: 1px solid #{$ink}33;
@@ -152,106 +223,86 @@ $mono: 'JetBrains Mono', monospace;
     text-decoration: line-through;
     text-decoration-color: $orange;
 
-    &:last-child { text-decoration: none; background: $ink; color: $paper; }
+    #{$outlook} & { border-radius: 0; }
+    #{$dark} & { border-color: #ffffff33; }
+
+    &--current {
+      text-decoration: none;
+      background: $ink;
+      color: $paper;
+
+      #{$dark} & { background: #ecebe6; color: #161a1b; }
+    }
   }
-}
 
-.m-cta { padding: 24px 28px 28px; }
-.m-btn {
-  display: inline-block;
-  width: 200px;
-  line-height: 48px;
-  border-radius: 99px;
-  background: $orange;
-  color: #fff;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  transition: transform .2s;
+  &__cta {
+    padding: 24px 28px 28px;
 
-  &:hover { transform: translateY(-2px); }
-}
+    #{$outlook} & { padding-bottom: 44px; }
+  }
 
-.m-foot {
-  padding: 20px 28px;
-  font-size: 12px;
-  line-height: 1.6;
-  text-align: center;
-  color: $grey;
-  border-top: 1px solid #{$ink}1a;
+  &__btn {
+    display: inline-block;
+    width: 200px;
+    line-height: 48px;
+    border-radius: 99px;
+    background: $orange;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: transform .2s;
 
-  a { color: inherit; }
-}
+    &:hover { transform: translateY(-2px); }
+  }
 
-// Outlook annotations
-.m-logo .m-pin { top: 26px; left: 76px; right: auto; }
-.m-pin {
-  position: absolute;
-  z-index: 2;
-  top: 6px;
-  right: 6px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: #0f6cbd;
-  color: #fff;
-  font: 500 10.5px/1.2 $mono;
-  font-style: normal;
-  letter-spacing: 0;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(-6px) scale(.9);
-  transition: opacity .3s, transform .4s $ease;
-}
-.m-cta .m-pin--good { top: auto; left: auto; bottom: 8px; right: 50%; transform: translate(50%, 6px) scale(.9); background: #1e8e3e; }
+  &__foot {
+    padding: 20px 28px;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+    color: $grey;
+    border-top: 1px solid #{$ink}1a;
 
-// ----- Outlook 2016 -----
-[data-client='outlook'] {
-  .mail-chrome { background: #0f6cbd; color: #fff; }
-  .mail-app::before { background: #fff; border-radius: 2px; }
-  .mail-canvas { background: #f3f2f1; }
-  .m,
-  .m * { font-family: Arial, Helvetica, sans-serif !important; }
-  .m-hero { background-image: none; }
-  .m-hero h4 { font-weight: 700 !important; font-size: 30px; line-height: 1.05; }
-  .m-logo { font-weight: 700; font-size: 26px; }
-  .m-card { border-radius: 0; }
-  .m-chips span { border-radius: 0; }
-  .m-pin { opacity: 1; transform: none; }
-  .m-pin--good { transform: translate(50%, 0); }
-  .m-grid .m-pin { transition-delay: .1s; }
-  .m-cta .m-pin { transition-delay: .2s; }
-  .m-cta { padding-bottom: 44px; }
-}
+    #{$dark} & { border-color: #ffffff1a; }
+  }
 
-// ----- Dark mode -----
-[data-client='dark'] {
-  .mail-window { background: #1c1c1e; color: #f2f2f7; }
-  .mail-chrome { background: #2c2c2e; color: #aeaeb2; }
-  .mail-app::before { background: #0a84ff; }
-  .mail-head { border-color: #ffffff14; }
-  .mail-avatar { background: $paper; color: $ink; }
-  .mail-canvas { background: #000; }
-  .m { background: #161a1b; color: #ecebe6; }
-  .m-head,
-  .m-foot { border-color: #ffffff1a; }
-  .m-card { background: #222a2b; }
-  .m-card p { color: #a9b5b4; }
-  .m-chips span { border-color: #ffffff33; }
-  .m-chips span:last-child { background: #ecebe6; color: #161a1b; }
-}
+  // Outlook annotations: hidden until the Outlook preview is on
+  &__pin {
+    position: absolute;
+    z-index: 2;
+    top: 6px;
+    right: 6px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #0f6cbd;
+    color: #fff;
+    font: 500 10.5px/1.2 $mono;
+    font-style: normal;
+    letter-spacing: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-6px) scale(.9);
+    transition: opacity .3s, transform .4s $ease;
 
-// ----- Mobile -----
-@mixin mobile-mail {
-  .m-col { display: block; width: 100%; }
-  .m-hero h4 { font-size: 36px; }
-}
-[data-device='mobile'] {
-  @include mobile-mail;
-  .m { max-width: 340px; }
-  .m-hero { padding: 32px 22px; }
-}
-@media (max-width: 560px) {
-  @include mobile-mail;
-  .mail-meta span { display: none; }
+    #{$outlook} & { opacity: 1; transform: none; }
+
+    &--logo { top: 26px; left: 76px; right: auto; }
+
+    &--card {
+      #{$outlook} & { transition-delay: .1s; }
+    }
+
+    &--good {
+      top: auto;
+      left: auto;
+      bottom: 8px;
+      right: 50%;
+      transform: translate(50%, 6px) scale(.9);
+      background: #1e8e3e;
+
+      #{$outlook} & { transform: translate(50%, 0); transition-delay: .2s; }
+    }
+  }
 }

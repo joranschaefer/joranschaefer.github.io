@@ -35,6 +35,7 @@ Dependencies: `vite` and `sass-embedded` (styles are SCSS, compiled by Vite). No
 ## Conventions
 
 - Design tokens live on `:root` in `style.scss`. The remix panel overrides `--accent`, `--radius`, `--marquee-speed` and `--display` at runtime, so use those variables instead of hard-coded values where it makes sense. Anything that must change at runtime stays a CSS custom property; Sass `$variables`, mixins and loops are for build-time constants only.
+- Class names follow BEM (`block__element--modifier`), and every styled element gets its own class, with no bare tag selectors inside a block. In SCSS, nest elements and modifiers under their block with `&__element` / `&--modifier`. JS-toggled states stay `is-*` classes (`is-on`, `is-visible`, `is-past`, `is-flash`), and the mail demo's modes stay `data-client` / `data-device` attributes.
 - Fonts: Bebas Neue (display), Instrument Sans (body), JetBrains Mono (labels/code), from Google Fonts.
 - Copy is British English ("colours", "centre"). Brand names are spelled the way the brand writes them: MediaMarkt, bpost, Škoda, KIA.
 - `site.js` shows its own source files in the viewer. Keep them readable, and avoid regex literals in shown files (the highlighter doesn't handle them). Regex belongs in `highlight.js`, which isn't shown.

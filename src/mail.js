@@ -45,8 +45,8 @@ const root = document.querySelector('[data-mail]')
 if (root) {
   const app = root.querySelector('[data-app]')
   const log = root.querySelector('[data-mail-log]')
-  const canvas = root.querySelector('.mail-canvas')
-  const source = root.querySelector('.mail-source')
+  const canvas = root.querySelector('.mail__canvas')
+  const source = root.querySelector('.mail__source')
   const sourceBtn = root.querySelector('[data-source]')
 
   root.querySelector('[data-mail-code]').innerHTML = highlight(SOURCE, 'html')

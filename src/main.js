@@ -6,7 +6,7 @@ import clients from './data/clients.json'
 
 // Client marquee: rendered twice so the -50% loop is seamless
 const track = document.querySelector('[data-clients]')
-const row = clients.map((name) => `<span>${name}</span><i>✦</i>`).join('')
+const row = clients.map((name) => `<span class="marquee__item">${name}</span><i class="marquee__sep">✦</i>`).join('')
 track.innerHTML = row + row
 
 const clocks = document.querySelectorAll('[data-clock]')
