@@ -785,6 +785,15 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   color: var(--ink-soft);
 }
 
+// ---------- WOBBLE ----------
+// Holds the SVG filter. Not display: none, or browsers drop the filter.
+.fx { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+// Only filter while the slider is above 0: at 0 the type is crisp and costs nothing
+.is-wobbly {
+  .hero__hello, .hero__name, .section__title, .kind__title, .kind__fact-num, .stats__value, .contact__big { filter: url(#wobble); }
+}
+
 // ---------- REVEAL ----------
 .reveal {
   opacity: 0;

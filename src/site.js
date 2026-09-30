@@ -6,7 +6,7 @@ import mainSrc from './main.js?raw'
 import styleSrc from './style.scss?raw'
 import siteSrc from './site.js?raw'
 
-const DEFAULTS = { accent: '#ff5a1f', radius: 14, marquee: 45, font: 'bebas' }
+const DEFAULTS = { accent: '#ff5a1f', radius: 14, marquee: 45, wobble: 4, font: 'bebas' }
 
 // Accent swatches, straight from the skill bars on my 2015 CV
 const SWATCHES = [
@@ -29,6 +29,7 @@ const tokensSrc = (t) => `/* Live: edited from the remix panel */
   --accent: ${t.accent};
   --radius: ${t.radius}px;
   --marquee-speed: ${t.marquee}s;
+  --wobble: ${t.wobble}; /* feDisplacementMap scale */
   --display: ${FONTS[t.font].css};
 }`
 
@@ -42,6 +43,12 @@ if (root) {
   const stats = root.querySelector('[data-code-stats]')
   const tabsEl = root.querySelector('.code__tabs')
   const toast = root.querySelector('[data-toast]')
+  const wobbleMap = document.querySelector('[data-wobble-map]')
+
+  // Reduced motion: keep the distortion, stop the boiling
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelector('[data-wobble-anim]')?.remove()
+  }
 
   const files = [
     { name: 'tokens.css', lang: 'css', src: () => tokensSrc(tokens), live: true },
@@ -99,8 +106,12 @@ if (root) {
     html.style.setProperty('--radius', `${tokens.radius}px`)
     html.style.setProperty('--marquee-speed', `${tokens.marquee}s`)
     html.style.setProperty('--display', FONTS[tokens.font].css)
+    html.style.setProperty('--wobble', tokens.wobble)
+    wobbleMap.setAttribute('scale', tokens.wobble)
+    html.classList.toggle('is-wobbly', tokens.wobble > 0)
     root.querySelector('[data-out="radius"]').textContent = `${tokens.radius}px`
     root.querySelector('[data-out="marquee"]').textContent = `${tokens.marquee}s`
+    root.querySelector('[data-out="wobble"]').textContent = tokens.wobble
     swatches.forEach((s) => s.setAttribute('aria-pressed', s.dataset.color === tokens.accent))
     root.querySelectorAll('[data-font]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.font === tokens.font))
     if (key && active !== files[0]) select(files[0])
@@ -129,6 +140,7 @@ if (root) {
       tokens[input.dataset.token] = Number(input.value)
       if (input.dataset.token === 'marquee') say(tokens.marquee < 12 ? 'Brands at warp speed.' : '')
       if (input.dataset.token === 'radius') say(tokens.radius === 0 ? 'Very Outlook 2016 of you.' : '')
+      if (input.dataset.token === 'wobble') say(tokens.wobble >= 18 ? 'Hand-lettered, after Friday drinks.' : '')
       apply(input.dataset.token)
     })
   })
