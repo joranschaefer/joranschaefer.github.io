@@ -5,7 +5,7 @@ Personal portfolio site for Joran Schaefer, creative developer at VML (formerly 
 ## Commands
 
 - `npm run dev` — Vite dev server
-- `npm run build` — production build to `dist/`
+- `npm run build` — production build to `docs/` (set in `vite.config.js`). `docs/` is committed: GitHub Pages serves it, so rebuild and commit it before pushing
 - `npm run preview` — serve the build (port 4173)
 
 Dependencies: `vite` and `sass-embedded` (styles are SCSS, compiled by Vite). No framework. Keep it that way: the page itself claims "no framework, two dependencies: Vite and Sass".
