@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joran Schaefer | Creative Developer</title>
+    <meta name="description" content="Hi! I am a creative developer. I build display campaigns, HTML emails, internal tools and websites." />
+    <meta property="og:title" content="Joran Schaefer — Creative Developer" />
+    <meta property="og:description" content="Banners, email, tools and websites. Designer by training, developer by habit." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-B65-3L6f.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CwCTMrLw.css">
+  </head>
+  <body>
+    <!-- Wobble wobble wobble -->
+    <svg class="fx" aria-hidden="true" focusable="false">
+      <filter id="wobble" x="-5%" y="-10%" width="110%" height="120%">
+        <feTurbulence type="turbulence" baseFrequency="0.03" numOctaves="2" seed="1" result="noise">
+          <animate attributeName="seed" values="1;2;3;4;5" dur="0.5s" calcMode="discrete" repeatCount="indefinite" data-wobble-anim />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" data-wobble-map />
+      </filter>
+    </svg>
+
+    <header class="nav">
+      <a class="nav__logo" href="#top" aria-label="Joran Schaefer, back to top">JS<span class="nav__dot">.</span></a>
+      <nav class="nav__menu" aria-label="Main">
+        <a class="nav__link" href="#work">Work</a>
+        <a class="nav__link" href="#lab">Lab</a>
+        <a class="nav__link" href="#about">About</a>
+        <a class="nav__link nav__link--cta" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> Creative developer · Kontich, BE · <span data-clock>--:--</span></p>
+        <h1 class="hero__title">
+          <span class="hero__hello">Ohai, I'm</span>
+          <span class="hero__name">Joran <em class="hero__outline">Schaefer</em></span>
+        </h1>
+        <div class="hero__rule" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <p class="hero__lede">
+            Creative developer at <strong class="hero__highlight">VML</strong>. I build display campaigns that ship in dozens of sizes, HTML emails that survive Outlook, the tooling that makes both faster, and websites for businesses I believe in.
+          </p>
+          <dl class="stats">
+            <div class="stats__item"><dt class="stats__value">11</dt><dd class="stats__label">years of service</dd></div>
+            <div class="stats__item"><dt class="stats__value">100+</dt><dd class="stats__label">brands worked on</dd></div>
+            <div class="stats__item"><dt class="stats__value">1k+</dt><dd class="stats__label">mails developed</dd></div>
+            <div class="stats__item"><dt class="stats__value">10M+</dt><dd class="stats__label">lines written</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <div class="marquee" aria-hidden="true">
+        <!-- Filled from src/data/clients.json -->
+        <div class="marquee__track" data-clients></div>
+      </div>
+
+      <!-- WORK -->
+      <section id="work" class="section">
+        <header class="section__head">
+          <span class="section__num">01</span>
+          <h2 class="section__title">What I make</h2>
+          <p class="section__intro">Eleven years of service, three types of work. The client work stays under NDA, so every example below was built for this page. They're all live, so poke at them.</p>
+        </header>
+
+        <!-- A · DISPLAY ADS -->
+        <article class="kind reveal" id="banners">
+          <div class="kind__copy">
+            <p class="kind__index"><span class="kind__letter">A</span> Display ads</p>
+            <h3 class="kind__title">Banners that <s>annoy</s> amaze</h3>
+            <p class="kind__text">I've animated HTML5 ads for clients such as Belfius, Nationale Loterij, Q8, Mazda, Amazon and many more.</p>
+            <ul class="kind__facts">
+              <li class="kind__fact"><strong class="kind__fact-num">1</strong>source</li>
+              <li class="kind__fact"><strong class="kind__fact-num">4</strong>sizes here</li>
+              <li class="kind__fact"><strong class="kind__fact-num" data-weight>–</strong>of 150 kB</li>
+            </ul>
+            <ul class="tags"><li class="tags__item">Banners</li><li class="tags__item">GSAP</li><li class="tags__item">IAB</li><li class="tags__item">Weborama</li><li class="tags__item">Adnami</li></ul>
+            <p class="kind__hint">↳ Switch sizes: same code, new layout. Then click it.</p>
+          </div>
+
+          <div class="demo demo--banner" data-banner>
+            <div class="demo__bar">
+              <div class="seg" role="group" aria-label="Banner size">
+                <button type="button" class="seg__btn" data-size="300x250" aria-pressed="false">300×250</button>
+                <button type="button" class="seg__btn" data-size="300x600" aria-pressed="true">300×600</button>
+                <button type="button" class="seg__btn" data-size="728x90" aria-pressed="false">728×90</button>
+                <button type="button" class="seg__btn" data-size="320x100" aria-pressed="false">320×100</button>
+              </div>
+              <button type="button" class="btn" data-replay aria-label="Replay banner">↻ Replay</button>
+            </div>
+
+            <div class="ad-viewport">
+              <a class="ad ad-viewport__ad" href="#contact" data-clicktag style="width:300px;height:600px" aria-label="Banner: Joran Schaefer, creative developer. Click to get in touch.">
+                <div class="ad__bg" aria-hidden="true"><i class="ad__blob"></i><i class="ad__blob"></i><i class="ad__blob"></i></div>
+                <div class="ad__frame ad__frame--hello"><span class="ad__text">Hi, I'm</span><strong class="ad__big">Joran</strong></div>
+                <div class="ad__frame"><strong class="ad__big">11</strong><span class="ad__text">years of pixels at VML</span></div>
+                <div class="ad__frame"><strong class="ad__big">100+</strong><span class="ad__text">brands, every size they asked for</span></div>
+                <div class="ad__frame"><strong class="ad__big">1k+</strong><span class="ad__text">mails that survived Outlook</span></div>
+                <div class="ad__frame">
+                  <b class="ad__logo">JS<em class="ad__logo-dot">.</em></b>
+                  <span class="ad__tag">Creative developer</span>
+                  <span class="ad__cta">Let's talk →</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="demo__foot">
+              <div class="ad-dots" role="group" aria-label="Jump to frame"></div>
+              <code class="demo__log" data-log>loop 0/3</code>
+            </div>
+          </div>
+        </article>
+
+        <!-- B · HTML MAILS -->
+        <article class="kind kind--flip reveal" id="mails">
+          <div class="kind__copy">
+            <p class="kind__index"><span class="kind__letter">B</span> HTML mails</p>
+            <h3 class="kind__title">Mails that survive Outlook</h3>
+            <p class="kind__text">Over a thousand hand-coded production mails for Nationale Loterij, Telenet, KIA, Mazda, Media Markt and many more. That means table-based layouts, light and dark mode, fluid-hybrid stacking and buttons that hold up everywhere.</p>
+            <p class="kind__aside">Yes, I work at VML. And yes, I still write VML: it's how Outlook draws a rounded button.</p>
+            <ul class="tags"><li class="tags__item">HTML</li><li class="tags__item">MSO conditionals</li><li class="tags__item">VML</li><li class="tags__item">Dark mode</li><li class="tags__item">Responsive</li></ul>
+            <p class="kind__hint">↳ Switch clients, go mobile, or peek at the source.</p>
+          </div>
+
+          <div class="demo demo--mail" data-mail data-client="gmail" data-device="desktop">
+            <div class="demo__bar">
+              <div class="seg" role="group" aria-label="Email client">
+                <button type="button" class="seg__btn" data-client="gmail" aria-pressed="true">Gmail</button>
+                <button type="button" class="seg__btn" data-client="outlook" aria-pressed="false">Outlook 2016</button>
+                <button type="button" class="seg__btn" data-client="dark" aria-pressed="false">Dark mode</button>
+              </div>
+              <div class="seg" role="group" aria-label="Device">
+                <button type="button" class="seg__btn" data-device="desktop" aria-pressed="true">Desktop</button>
+                <button type="button" class="seg__btn" data-device="mobile" aria-pressed="false">Mobile</button>
+              </div>
+              <button type="button" class="btn" data-source aria-pressed="false">&lt;/&gt; Source</button>
+            </div>
+
+            <div class="mail">
+              <div class="mail__chrome"><span class="mail__app" data-app>Gmail</span><span class="mail__dots" aria-hidden="true"><i class="mail__dot"></i><i class="mail__dot"></i><i class="mail__dot"></i></span></div>
+              <div class="mail__head">
+                <span class="mail__avatar" aria-hidden="true">JS</span>
+                <div class="mail__meta">
+                  <p><strong>Joran Schaefer</strong> <span class="mail__address">&lt;joran.schaefer@gmail.com&gt;</span></p>
+                  <p class="mail__subject">Your skills report is ready</p>
+                  <p class="mail__pre">11 years, 1000+ mails, zero excuses.</p>
+                </div>
+                <time class="mail__time" data-clock>--:--</time>
+              </div>
+
+              <div class="mail__canvas">
+                <table class="email" role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td class="email__head">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+                        <td class="email__logo">JS<span class="email__logo-dot">.</span><em class="email__pin email__pin--logo">Web font → Arial fallback</em></td>
+                        <td class="email__issue" align="right">Skills report · Q3</td>
+                      </tr></table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email__hero">
+                      <em class="email__pin">Gradient → solid bgcolor</em>
+                      <p class="email__kicker">Issue #1000+</p>
+                      <h4 class="email__title">Tables aren't dead. They moved to email.</h4>
+                      <p class="email__intro">Eleven years of inboxes in one mail. It even works in Outlook.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email__grid">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="email__col"><div class="email__card"><em class="email__pin email__pin--card">border-radius → square</em><b class="email__icon">◐</b><strong class="email__card-title">Dark mode</strong><p class="email__card-text">Colours and logos that still look intentional when the client flips them.</p></div></td>
+                          <td class="email__col"><div class="email__card"><b class="email__icon">⇲</b><strong class="email__card-title">Fluid-hybrid</strong><p class="email__card-text">Columns that stack on a 320px screen, even without media queries.</p></div></td>
+                        </tr>
+                        <tr>
+                          <td class="email__col"><div class="email__card"><b class="email__icon">▣</b><strong class="email__card-title">Bulletproof</strong><p class="email__card-text">Buttons in VML for Outlook, CSS for everyone else. Always clickable.</p></div></td>
+                          <td class="email__col"><div class="email__card"><b class="email__icon">✓</b><strong class="email__card-title">Tested</strong><p class="email__card-text">Checked across the clients that matter before a single send.</p></div></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email__survived">
+                      <p class="email__survived-label">Outlook versions survived</p>
+                      <div class="email__chips"><span class="email__chip">2007</span><span class="email__chip">2010</span><span class="email__chip">2013</span><span class="email__chip">2016</span><span class="email__chip">2019</span><span class="email__chip">365</span><span class="email__chip email__chip--current">New</span></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email__cta" align="center">
+                      <a class="email__btn" href="mailto:joran.schaefer@gmail.com?subject=Let's%20talk">Book a call</a>
+                      <em class="email__pin email__pin--good">Still round: &lt;v:roundrect&gt;</em>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="email__foot">You got this mail because you scrolled this far.<br /><a href="#contact">Unsubscribe from being impressed</a></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="mail__source" hidden>
+                <pre class="source mail__code"><code data-mail-code></code></pre>
+              </div>
+            </div>
+            <div class="demo__foot"><code class="demo__log" data-mail-log></code></div>
+          </div>
+        </article>
+
+        <!-- C · CAMPAIGN PAGES -->
+        <article class="kind reveal" id="sites">
+          <div class="kind__copy">
+            <p class="kind__index"><span class="kind__letter">C</span> Campaign pages &amp; minisites</p>
+            <h3 class="kind__title">Pages with a deadline</h3>
+            <p class="kind__text">Launch pages, contests and minisites that go live with a campaign and have to be fast, tracked and on brand from day one.</p>
+            <p class="kind__aside">This page is one too. It's built with Vite, uses no framework and has two dependencies: Vite and Sass.</p>
+            <p class="kind__hint">↳ Remix the page and watch its code change. The files on the right are the real source.</p>
+          </div>
+
+          <div class="demo demo--code" data-site>
+            <div class="code">
+              <div class="code__tabs" role="tablist" aria-label="Source files"></div>
+              <div class="code__body">
+                <pre class="code__gutter" aria-hidden="true"></pre>
+                <pre class="source code__source"><code data-code></code></pre>
+              </div>
+              <div class="code__foot"><span data-code-stats></span><span data-code-total></span></div>
+            </div>
+
+            <div class="remix">
+              <p class="remix__title">Remix this page</p>
+              <div class="remix__row">
+                <span class="remix__label">Accent</span>
+                <div class="swatches" data-swatches></div>
+              </div>
+              <label class="remix__row">
+                <span class="remix__label">Corner radius <output class="remix__value" data-out="radius">14px</output></span>
+                <input class="remix__range" type="range" min="0" max="32" value="14" data-token="radius" />
+              </label>
+              <label class="remix__row">
+                <span class="remix__label">Marquee speed <output class="remix__value" data-out="marquee">45s</output></span>
+                <input class="remix__range" type="range" min="6" max="90" value="45" data-token="marquee" dir="rtl" />
+              </label>
+              <label class="remix__row">
+                <span class="remix__label">Wobble <output class="remix__value" data-out="wobble">4</output></span>
+                <input class="remix__range" type="range" min="0" max="24" value="4" data-token="wobble" />
+              </label>
+              <div class="remix__row">
+                <span class="remix__label">Display font</span>
+                <div class="seg seg--small" role="group" aria-label="Display font" data-fonts>
+                  <button type="button" class="seg__btn" data-font="bebas" aria-pressed="true">Bebas</button>
+                  <button type="button" class="seg__btn" data-font="serif" aria-pressed="false">Serif</button>
+                  <button type="button" class="seg__btn" data-font="comic" aria-pressed="false">Comic Sans</button>
+                </div>
+              </div>
+              <button type="button" class="btn remix__reset" data-reset>Reset</button>
+              <p class="remix__toast" data-toast aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- <div class="thumbs reveal">
+          <p class="thumbs__label">Recent sites under DEFINED</p>
+          <a class="thumbs__item" href="https://www.defined-detailing.be" target="_blank" rel="noopener"><img class="thumbs__img" src="/work/defined.jpg" alt="" loading="lazy" /><span class="thumbs__name">Defined Detailing ↗</span><small class="thumbs__meta">PHP · GSAP · mPDF</small></a>
+          <div class="thumbs__item"><img class="thumbs__img" src="/work/antwrap.png" alt="" loading="lazy" /><span class="thumbs__name">Antwrap</span><small class="thumbs__meta">Vite · Tailwind · CSS 3D</small></div>
+          <div class="thumbs__item"><img class="thumbs__img" src="/work/shogun.png" alt="" loading="lazy" /><span class="thumbs__name">Shogun PDR</span><small class="thumbs__meta">WordPress theme</small></div>
+          <a class="thumbs__item" href="https://www.lmnt.be" target="_blank" rel="noopener"><img class="thumbs__img" src="/work/lmnt.png" alt="" loading="lazy" /><span class="thumbs__name">LMNT Jiu-Jitsu ↗</span><small class="thumbs__meta">PHP · GSAP</small></a>
+        </div> -->
+      </section>
+
+      <!-- LAB -->
+      <section id="lab" class="section section--paper">
+        <header class="section__head">
+          <span class="section__num">02</span>
+          <h2 class="section__title">Lab</h2>
+          <p class="section__intro">Tools I build between campaigns and things I make after hours, mostly to learn something, sometimes just to make people laugh.</p>
+        </header>
+
+        <ul class="lab">
+          <li class="lab__row reveal"><span class="lab__name">Paper Plane</span><span class="lab__what">Send test mails to a whole list in one go</span><span class="lab__tech">Express</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Artificial Window</span><span class="lab__what">A fake window for the office TV, synced to the real weather</span><span class="lab__tech">Raspberry Pi</span></li>
+          <li class="lab__row reveal"><span class="lab__name">De rol is op</span><span class="lab__what">Tells facilities which toilet ran out of paper. Used daily.</span><span class="lab__tech">Tailwind + GSAP</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Back to the Stineties</span><span class="lab__what">Farewell site for a colleague, with an arcade game built in</span><span class="lab__tech">Canvas 2D</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Drawnie</span><span class="lab__what">Multiplayer Pictionary for the office, in Dutch</span><span class="lab__tech">WebSockets</span></li>
+          <li class="lab__row reveal"><span class="lab__name">CodeCars Rally Run</span><span class="lab__what">Browser rally racer</span><span class="lab__tech">Three.js</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Rocket Powerrrr</span><span class="lab__what">Three.js rocket experiment</span><span class="lab__tech">Three.js</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Arena</span><span class="lab__what">3D platformer prototype</span><span class="lab__tech">Three.js + Vue</span></li>
+          <li class="lab__row reveal"><span class="lab__name">NotionCopy</span><span class="lab__what">Copy a single Notion database cell, finally</span><span class="lab__tech">Chrome MV3</span></li>
+          <li class="lab__row reveal"><span class="lab__name">Mmmmmmmm</span><span class="lab__what">Can't decide what to get at the frituur? It picks for you</span><span class="lab__tech">Vite</span></li>
+        </ul>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <header class="section__head">
+          <span class="section__num">03</span>
+          <h2 class="section__title">Then &amp; now</h2>
+          <p class="section__intro">My 2015 CV had skill bars for everything I thought I could do. Some of them aged well.</p>
+        </header>
+
+        <div class="about">
+          <div class="about__col reveal">
+            <h3 class="about__label">2015</h3>
+            <ul class="bars">
+              <li class="bars__item" style="--w:88%;--c:#4a8bc9">Photoshop</li>
+              <li class="bars__item" style="--w:74%;--c:#f07f22">Illustrator</li>
+              <li class="bars__item" style="--w:54%;--c:#b52f73">InDesign</li>
+              <li class="bars__item bars__item--dead" style="--w:54%;--c:#e0262a">Flash <small class="bars__note">RIP</small></li>
+              <li class="bars__item" style="--w:54%;--c:#bfa5d1">After Effects</li>
+              <li class="bars__item" style="--w:88%;--c:#e8792a">HTML5</li>
+              <li class="bars__item" style="--w:80%;--c:#3c97d4">CSS3</li>
+              <li class="bars__item" style="--w:70%;--c:#253c51">jQuery</li>
+              <li class="bars__item" style="--w:60%;--c:#5b6aa8">PHP</li>
+            </ul>
+          </div>
+          <div class="about__col reveal">
+            <h3 class="about__label">Now</h3>
+            <ul class="bars bars--now">
+              <li class="bars__item" style="--w:92%">HTML &amp; CSS / SCSS</li>
+              <li class="bars__item" style="--w:86%">JavaScript · GSAP</li>
+              <li class="bars__item" style="--w:80%">Vite · Node tooling</li>
+              <li class="bars__item" style="--w:95%">HTML Mail Development</li>
+              <li class="bars__item" style="--w:82%">PHP · Laravel · WordPress</li>
+              <li class="bars__item" style="--w:95%">Creative Ads</li>
+              <li class="bars__item" style="--w:66%">Vue · React · Astro</li>
+              <li class="bars__item" style="--w:58%">Three.js / WebGL</li>
+              <li class="bars__item" style="--w:85%">Photoshop · Illustrator · Figma</li>
+            </ul>
+          </div>
+          <div class="about__col about__col--story reveal">
+            <h3 class="about__label">Path</h3>
+            <ol class="timeline">
+              <li class="timeline__item"><time class="timeline__time">2006–11</time>Student Graphic Techniques</li>
+              <li class="timeline__item"><time class="timeline__time">2010–12</time>Student Advertising Design</li>
+              <li class="timeline__item"><time class="timeline__time">2013–15</time>Student Web Development</li>
+              <li class="timeline__item"><time class="timeline__time">2015</time>Intern @These Days</li>
+              <li class="timeline__item"><time class="timeline__time">2015–now</time>Creative developer @VML</li>
+              <li class="timeline__item"><time class="timeline__time">Weekends</time>Part-time car detailer</li>
+            </ol>
+            <p class="about__off">Off-screen: I listen to just about every kind of music, and I love washing cars.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="contact">
+        <p class="eyebrow">Got a project, a banner problem, or just a dirty car?</p>
+        <a class="contact__big" href="mailto:joran.schaefer@gmail.com">Let's talk<span class="contact__arrow">↗</span></a>
+        <ul class="contact__list">
+          <li class="contact__item"><span class="contact__label">Email</span><a class="contact__link" href="mailto:joran.schaefer@gmail.com">joran.schaefer@gmail.com</a></li>
+          <li class="contact__item"><span class="contact__label">Phone</span><a class="contact__link" href="tel:+32470928716">+32 470 92 87 16</a></li>
+          <li class="contact__item"><span class="contact__label">LinkedIn</span><a class="contact__link" href="https://www.linkedin.com/in/joranschaefer" target="_blank" rel="noopener">in/joranschaefer</a></li>
+          <li class="contact__item"><span class="contact__label">GitHub</span><a class="contact__link" href="https://github.com/joranschaefer" target="_blank" rel="noopener">joranschaefer</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span data-year></span> Joran Schaefer &amp; Claude Eeej Aaaj</span>
+      <span>Powered by Vite. No LLMs were harmed in the making of this webthing.</span>
+    </footer>
+
+  </body>
+</html>
