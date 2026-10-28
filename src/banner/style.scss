@@ -1,0 +1,241 @@
+$accent: #ff5a1f;
+$ink: #17292b;
+$paper: #f2efe8;
+$ease: cubic-bezier(.2, .8, .2, 1);
+$display: 'Bebas Neue', Impact, sans-serif;
+$body: 'Instrument Sans', Arial, sans-serif;
+
+.page {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: $accent;
+}
+
+.banner {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  container-type: size;
+  border: 1px solid $ink;
+  background: $accent repeating-linear-gradient(-45deg, transparent 0 14px, rgb(0 0 0 / .06) 14px 28px);
+  background-size: 200% 200%;
+  animation: banner-stripes 8s linear infinite;
+  color: $ink;
+  font-family: $display;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  // Force stop (IAB)
+  &.is-still,
+  &.is-still * { animation-play-state: paused !important; }
+
+  // Flash on a crash
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+  }
+  &.is-hit::after { animation: banner-hit .35s ease-out; }
+
+  &__game {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  &__frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 12cqh 7cqmin 22cqh;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility 0s .35s;
+
+    &.is-on { opacity: 1; visibility: visible; transition: opacity .35s ease; }
+  }
+
+  &__card {
+    margin: 0;
+    padding: 4cqmin 6cqmin 3cqmin;
+    border: 2px solid $ink;
+    border-radius: 4cqmin;
+    background: $paper;
+    box-shadow: 1.2cqmin 1.2cqmin 0 $ink;
+    text-align: center;
+  }
+
+  &__lead { display: block; font-size: 10cqmin; line-height: .9; }
+
+  &__word {
+    display: block;
+    font-size: 16cqmin;
+    font-weight: 400;
+    line-height: .9;
+    white-space: nowrap;
+
+    &.is-in { animation: banner-in .45s $ease; }
+  }
+
+  &__hint,
+  &__result {
+    padding: 2.6cqmin 5cqmin;
+    border-radius: 99px;
+    background: $ink;
+    color: $paper;
+  }
+
+  &__hint {
+    padding: 3.6cqmin 7cqmin;
+    font: 600 7.5cqmin/1 $body;
+    animation: banner-nudge 1.6s ease-in-out infinite;
+  }
+
+  // Game is active
+  &__frame--play { justify-content: flex-start; padding-top: 6cqh; }
+
+  &__score {
+    font-size: 22cqmin;
+    line-height: 1;
+    color: $paper;
+    -webkit-text-stroke: .8cqmin $ink;
+    paint-order: stroke fill;
+  }
+
+  // Game is inactive
+  &__frame--end {
+    justify-content: center;
+    gap: 5cqmin;
+    padding: 7cqmin;
+    background: rgb(255 90 31 / .92);
+    pointer-events: auto;
+    text-align: center;
+  }
+
+  &__brand,
+  &__outro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4cqmin;
+  }
+
+  &__logo { font: 400 20cqmin/.8 $display; }
+  &__logo-dot { font-style: normal; color: $paper; }
+  &__tag { font: 600 5.5cqmin/1.2 $body; }
+
+  &__result {
+    margin: 0;
+    padding: .5em 1em .4em;
+    font-size: 1em;
+    line-height: 1;
+  }
+
+  &__msg {
+    margin: 0;
+    max-width: 24ch;
+    font: 600 5.5cqmin/1.25 $body;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5cqmin;
+    margin-top: 5cqmin;
+  }
+
+  &__cta {
+    padding: 1cqmin;
+    color: $ink;
+    font: 600 5cqmin/1 $body;
+    text-decoration: underline;
+    text-underline-offset: .2em;
+    cursor: pointer;
+  }
+
+  &__again {
+    padding: 3cqmin 6cqmin;
+    border-radius: 99px;
+    border: 0;
+    background: $ink;
+    color: $paper;
+    font: 600 6cqmin/1 $body;
+    text-decoration: none;
+    animation: banner-nudge 1.6s ease-in-out infinite;
+    cursor: pointer;
+
+    &:hover { background: $paper; color: $ink; }
+  }
+}
+
+@keyframes banner-stripes { to { background-position: 100% 100%; } }
+@keyframes banner-nudge { 50% { transform: scale(1.06); } }
+@keyframes banner-in { from { opacity: 0; transform: translateY(30%); } }
+@keyframes banner-hit { from { opacity: .8; } to { opacity: 0; } }
+
+// Leaderboard
+@container (aspect-ratio > 1.8) {
+  .banner {
+    &__frame {
+      flex-direction: row;
+      align-items: center;
+      padding: 6cqh 6cqh 12cqh;
+    }
+
+    &__card { padding: 3cqh 5cqh 2cqh; border-radius: 4cqh; box-shadow: 1.5cqh 1.5cqh 0 $ink; text-align: left; }
+    &__lead { font-size: 12cqh; }
+    &__word { font-size: 20cqh; }
+    &__hint { padding: 4.5cqh 7cqh; font-size: 11cqh; }
+    &__frame--play { justify-content: center; }
+    &__score { font-size: 30cqh; -webkit-text-stroke-width: 1.2cqh; }
+
+    &__frame--end { align-items: center; gap: 6cqw; padding: 6cqh; text-align: left; }
+    &__brand { align-items: flex-start; gap: 3cqh; }
+    &__outro { align-items: flex-start; gap: 4cqh; }
+    &__logo { font-size: 40cqh; }
+    &__tag { max-width: 10ch; font-size: 8cqh; }
+    &__result { padding: 3cqh 5cqh 2cqh; font-size: 11cqh; }
+    &__msg { font-size: 9cqh; max-width: 26ch; }
+    &__actions { flex-direction: row; flex-wrap: wrap; gap: 3cqh; }
+    &__cta { padding: 4.5cqh 6cqh; font-size: 9cqh; }
+    &__again { font-size: 7.5cqh; }
+  }
+}
+
+// 320×100
+@container (aspect-ratio > 2.6) {
+  .banner {
+    &__frame { padding: 8cqh 5cqw 14cqh; }
+
+    &__card { padding: 4cqh 6cqh 3cqh; border-width: 1.5px; box-shadow: 2cqh 2cqh 0 $ink; }
+    &__lead { font-size: 14cqh; }
+    &__word { font-size: 26cqh; }
+    &__hint { padding: 6cqh 9cqh; font-size: 13cqh; }
+    &__score { font-size: 40cqh; }
+
+    &__frame--end { justify-content: space-between; gap: 4cqw; padding: 6cqh 5cqw; }
+    &__brand { gap: 3cqh; }
+    &__outro { gap: 5cqh; }
+    &__logo { font-size: 48cqh; }
+    &__tag { font-size: 11cqh; }
+    &__result { padding: 4cqh 6cqh 3cqh; font-size: 13cqh; }
+    &__msg { max-width: none; font-size: 11cqh; }
+    &__actions { flex-wrap: nowrap; align-items: center; gap: 5cqh; }
+    &__cta { padding: 6cqh 8cqh; font-size: 11cqh; }
+    &__again { font-size: 10cqh; }
+  }
+}

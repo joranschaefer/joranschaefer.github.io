@@ -1,0 +1,60 @@
+// Injected into the demo mail's iframe by mail.js. Not part of the mail:
+// this fakes how each client renders it, and adds the Outlook annotations.
+$mono: 'JetBrains Mono', monospace;
+$ease: cubic-bezier(.2, .8, .2, 1);
+$outlook: "[data-client='outlook']";
+
+// Smooth switching between clients
+.inbox, .inbox__wrap, .email, .email__card, .email__chip { transition: background .3s, color .3s, border-radius .3s; }
+
+// Outlook 2016 renders with Word. The mail's own <!--[if mso]> styles are switched on by mail.js,
+// these are the limits of the engine itself
+#{$outlook} {
+  .inbox, .inbox__wrap { background: #f3f2f1 !important; }
+  .email * { border-radius: 0 !important; background-image: none !important; }
+  .email__cta { padding-bottom: 44px !important; }
+
+  // Stands in for the VML <v:roundrect>, which only Outlook draws
+  .email .email__btn { border-radius: 99px !important; }
+}
+
+// Annotations, pinned to the parts Outlook changes
+.email__logo, .email__hero, .email__card, .email__cta { position: relative; }
+
+.mail-pin {
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  right: 6px;
+  padding: 4px 8px;
+  border-radius: 4px !important;
+  background: #0f6cbd;
+  color: #fff;
+  font: 500 10.5px/1.2 $mono !important;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-6px) scale(.9);
+  transition: opacity .3s, transform .4s $ease;
+
+  #{$outlook} & { opacity: 1; transform: none; }
+
+  &--logo { top: 26px; left: 76px; right: auto; }
+
+  &--card {
+    #{$outlook} & { transition-delay: .1s; }
+  }
+
+  &--good {
+    top: auto;
+    left: auto;
+    bottom: 8px;
+    right: 50%;
+    transform: translate(50%, 6px) scale(.9);
+    background: #1e8e3e;
+
+    #{$outlook} & { transform: translate(50%, 0); transition-delay: .2s; }
+  }
+}

@@ -1,30 +1,27 @@
 import { highlight } from './highlight.js'
 import mainSrc from './main.js?raw'
-// import bannerSrc from './banner.js?raw'
-// import bannerScssSrc from './banner.scss?raw'
-// import mailSrc from './mail.js?raw'
 import styleSrc from './style.scss?raw'
 import siteSrc from './site.js?raw'
 
 const DEFAULTS = { accent: '#ff5a1f', radius: 14, marquee: 45, wobble: 4, font: 'bebas' }
 
-// Accent swatches, straight from the skill bars on my 2015 CV
+// [colour, name, toast]
 const SWATCHES = [
-  ['#ff5a1f', 'Signal orange'],
-  ['#4a8bc9', 'Photoshop blue'],
-  ['#f07f22', 'Illustrator orange'],
-  ['#b52f73', 'InDesign pink'],
-  ['#e0262a', 'Flash red, RIP'],
-  ['#5b6aa8', 'PHP purple'],
+  ['#ff5a1f', 'Orange Box', 'Orange Box. Terug naar de factory settings.'],
+  ['#a335ee', 'Epic loot', 'Net geen legendary, but still. Gz!'],
+  ['#0078d7', 'Blue screen of death', ':( Je pagina heeft een probleem gevonden en moet opnieuw opstarten.'],
+  ['#306230', 'Game Boy', 'Game Boy-groen. Eerst even in de cartridge blazen.'],
+  ['#ff2a6d', 'Synthwave', 'Synthwave. Zonnebril op, het is 1986.'],
+  ['#e0262a', 'Low HP', 'Low HP! Heal me plz...'],
 ]
 
 const FONTS = {
   bebas: { css: "'Bebas Neue', Impact, sans-serif", toast: '' },
-  serif: { css: "Georgia, 'Times New Roman', serif", toast: 'Very editorial. Very Outlook, too.' },
-  comic: { css: "'Comic Sans MS', 'Comic Neue', cursive", toast: 'You asked for this.' },
+  serif: { css: "Georgia, 'Times New Roman', serif", toast: '' },
+  comic: { css: "'Comic Sans MS', 'Comic Neue', cursive", toast: '' },
 }
 
-const tokensSrc = (t) => `/* Live: edited from the remix panel */
+const tokensSrc = (t) => `
 :root {
   --accent: ${t.accent};
   --radius: ${t.radius}px;
@@ -45,7 +42,6 @@ if (root) {
   const toast = root.querySelector('[data-toast]')
   const wobbleMap = document.querySelector('[data-wobble-map]')
 
-  // Reduced motion: keep the distortion, stop the boiling
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelector('[data-wobble-anim]')?.remove()
   }
@@ -53,9 +49,6 @@ if (root) {
   const files = [
     { name: 'tokens.css', lang: 'css', src: () => tokensSrc(tokens), live: true },
     { name: 'main.js', lang: 'js', src: () => mainSrc },
-    // { name: 'banner.js', lang: 'js', src: () => bannerSrc },
-    // { name: 'banner.scss', lang: 'scss', src: () => bannerScssSrc },
-    // { name: 'mail.js', lang: 'js', src: () => mailSrc },
     { name: 'site.js', lang: 'js', src: () => siteSrc, note: 'this viewer' },
     { name: 'style.scss', lang: 'scss', src: () => styleSrc },
   ]
@@ -118,7 +111,7 @@ if (root) {
     else render(Boolean(key))
   }
 
-  const swatches = SWATCHES.map(([color, name]) => {
+  const swatches = SWATCHES.map(([color, name, toastText]) => {
     const s = document.createElement('button')
     s.type = 'button'
     s.className = 'swatches__item'
@@ -128,7 +121,7 @@ if (root) {
     s.setAttribute('aria-label', name)
     s.addEventListener('click', () => {
       tokens.accent = color
-      say(name === 'Flash red, RIP' ? 'Flash red. A moment of silence, please.' : `${name} it is.`)
+      say(toastText)
       apply('accent')
     })
     root.querySelector('[data-swatches]').append(s)
@@ -138,9 +131,9 @@ if (root) {
   root.querySelectorAll('input[data-token]').forEach((input) => {
     input.addEventListener('input', () => {
       tokens[input.dataset.token] = Number(input.value)
-      if (input.dataset.token === 'marquee') say(tokens.marquee < 12 ? 'Brands at warp speed.' : '')
-      if (input.dataset.token === 'radius') say(tokens.radius === 0 ? 'Very Outlook 2016 of you.' : '')
-      if (input.dataset.token === 'wobble') say(tokens.wobble >= 18 ? 'Hand-lettered, after Friday drinks.' : '')
+      if (input.dataset.token === 'marquee') say(tokens.marquee < 12 ? 'I am speed.' : '')
+      if (input.dataset.token === 'radius') say(tokens.radius === 0 ? 'Heel Outlook 2016 van jou.' : '')
+      if (input.dataset.token === 'wobble') say(tokens.wobble >= 18 ? 'Handgeletterd, na de vrijdagdrink.' : '')
       apply(input.dataset.token)
     })
   })
@@ -156,7 +149,7 @@ if (root) {
   root.querySelector('[data-reset]').addEventListener('click', () => {
     Object.assign(tokens, DEFAULTS)
     root.querySelectorAll('input[data-token]').forEach((i) => (i.value = DEFAULTS[i.dataset.token]))
-    say('Back to factory settings.')
+    say('Terug naar de fabrieksinstellingen.')
     apply('reset')
   })
 

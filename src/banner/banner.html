@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="nl-BE">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai" />
+    <meta name="ad.size" content="width=300,height=600" />
+    <title>Flappy JS · banner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="page">
+    <div class="banner">
+      <canvas class="banner__game" aria-label="Flappy JS"></canvas>
+
+      <!-- Intro: the autopilot plays behind this, max 3 loops -->
+      <div class="banner__frame banner__frame--intro" data-frame="intro">
+        <p class="banner__card"><span class="banner__lead">This banner is</span><strong class="banner__word" data-word>HTML</strong></p>
+        <span class="banner__hint">▸ PLAY</span>
+      </div>
+
+      <div class="banner__frame banner__frame--play" data-frame="play">
+        <span class="banner__score" data-score>0</span>
+      </div>
+
+      <div class="banner__frame banner__frame--end" data-frame="end">
+        <div class="banner__brand">
+          <b class="banner__logo">&lt;/JS<em class="banner__logo-dot">.</em>&gt;</b>
+          <span class="banner__tag">Creative developer</span>
+        </div>
+        <div class="banner__outro">
+          <p class="banner__result" data-result>Score 0 · Best 0</p>
+          <p class="banner__msg" data-msg>Doe jij beter dan de autopilot?</p>
+          <div class="banner__actions">
+            <button class="banner__again" type="button" data-again>▸ PLAY</button>
+            <a class="banner__cta" href="#" data-clicktag>Even babbelen →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./custom.js"></script>
+  </body>
+</html>
