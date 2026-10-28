@@ -12,7 +12,7 @@ const msoCss = () => {
 // Annotations for the Outlook preview: [cell, note, modifier]
 const PINS = [
   ['.email__logo', 'Web font → Arial fallback', 'logo'],
-  ['.email__hero', 'Gradient → solid bgcolor'],
+  // ['.email__hero', 'Gradient → solid bgcolor'],
   ['.email__card', 'border-radius → square', 'card'],
   ['.email__cta', 'Still round: <v:roundrect>', 'good'],
 ]
